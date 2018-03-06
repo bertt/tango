@@ -20,5 +20,13 @@
 
 ## Demo motion tracking
 
+- Add some object (like a sphere)
+
+- Tango Camera -> Enable Tango AR script
+
+- Tango Camera -> Camera -> Clear flags -> Solid Color
+
+## Demo Area learning
+
 - 
 
