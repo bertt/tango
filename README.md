@@ -28,6 +28,9 @@
 
 ## Demo Area learning
 
+Prerequisites: There should be an ADF available of same room yo're now in. Otherwise no localisation is possble and the image will
+not disappear. Code loads the last available ADF file.
+
 https://web.archive.org/web/20170326085044/https://developers.google.com/tango/apis/unity/unity-howto-area-learning
 
 - Tango Manager -> Auto-connect to service -> disable
