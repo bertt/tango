@@ -1,5 +1,11 @@
 # tango
 
+## Hardware
+
+### Lenovo Phab 2 Pro
+
+<img src="tango.jpg">
+
 ## Installation Hello World
 
 - Unity3D -> new project
