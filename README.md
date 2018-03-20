@@ -111,6 +111,16 @@ public class AreaLearningStartup : MonoBehaviour, ITangoLifecycle
 }
 ```
 
-- Add UI (canvas + image)
+- Add UI 
 
-- Tango Manager -> Add script RelocalizingOverlay 
+UI -> canvas
+
+Set image to: Assets -> Tango SDK -> examples -> common -> textures -> relocalize_screen
+
+Click 'set native size'
+
+- Select Tango Manager -> Add script RelocalizingOverlay (Assets > TangoSDK > Examples > AreaLearning > Scripts )
+
+- Set property RelocalizingOverlay -> set property Relocalization Overlay to Canvas -> Image
+
+
