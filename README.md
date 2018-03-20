@@ -46,7 +46,7 @@ https://web.archive.org/web/20170326085044/https://developers.google.com/tango/a
 
 - Tango Manager -> Auto-connect to service -> disable
 
-- Tango Manager -> Tango Application (Script) -> Pose Mode -> Local Area Description
+- Tango Manager -> Tango Application (Script) -> Pose Mode -> Local Area Description (Load existing)
 
 - Add GameObject with script:
 
