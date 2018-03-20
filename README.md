@@ -33,13 +33,13 @@
 
 - Add some object (like a sphere)
 
-- Tango Camera -> Enable Tango AR script
+- Tango Camera -> Enable Tango AR Screen (Script)
 
 - Tango Camera -> Camera -> Clear flags -> Solid Color
 
 ## Demo Area learning
 
-Prerequisites: There should be an ADF available of same room yo're now in. Otherwise no localisation is possble and the image will
+Prerequisites: There should be an ADF available of same room you're now in. Otherwise no localisation is possble and the image will
 not disappear. Code loads the last available ADF file.
 
 https://web.archive.org/web/20170326085044/https://developers.google.com/tango/apis/unity/unity-howto-area-learning
@@ -114,8 +114,3 @@ public class AreaLearningStartup : MonoBehaviour, ITangoLifecycle
 - Add UI (canvas + image)
 
 - Tango Manager -> Add script RelocalizingOverlay 
-
-
-
-
-
