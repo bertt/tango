@@ -21,7 +21,7 @@
 
 - import package -> custom package -> TangoSDK_Ikariotikos_Unity5.unitypackage
 
-- replace google_unity_wrapper.aar (otherwise there will be crash on startup)
+- Only when using Unity2017: replace google_unity_wrapper.aar (otherwise there will be crash on startup)
 
 - add Tango Manager
 
