@@ -6,6 +6,11 @@
 
 <img src="tango.jpg">
 
+### Asus Zenfone AR
+
+<img src= "http://gadgethubspot.com/wp-content/myimages/2017/07/zpa2.png"/>
+
+
 ## Installation Hello World
 
 - Unity3D -> new project
@@ -16,7 +21,7 @@
 
 - import package -> custom package -> TangoSDK_Ikariotikos_Unity5.unitypackage
 
-- replace google_unity_wrapper.aar (otherwise there will be crash on startup)
+- Only when using Unity2017: replace google_unity_wrapper.aar (otherwise there will be crash on startup)
 
 - add Tango Manager
 
@@ -28,20 +33,20 @@
 
 - Add some object (like a sphere)
 
-- Tango Camera -> Enable Tango AR script
+- Tango Camera -> Enable Tango AR Screen (Script)
 
 - Tango Camera -> Camera -> Clear flags -> Solid Color
 
 ## Demo Area learning
 
-Prerequisites: There should be an ADF available of same room yo're now in. Otherwise no localisation is possble and the image will
+Prerequisites: There should be an ADF available of same room you're now in. Otherwise no localisation is possble and the image will
 not disappear. Code loads the last available ADF file.
 
 https://web.archive.org/web/20170326085044/https://developers.google.com/tango/apis/unity/unity-howto-area-learning
 
 - Tango Manager -> Auto-connect to service -> disable
 
-- Tango Manager -> Tango Application (Script) -> Pose Mode -> Local Area Description
+- Tango Manager -> Tango Application (Script) -> Pose Mode -> Local Area Description (Load existing)
 
 - Add GameObject with script:
 
@@ -106,11 +111,16 @@ public class AreaLearningStartup : MonoBehaviour, ITangoLifecycle
 }
 ```
 
-- Add UI (canvas + image)
+- Add UI 
 
-- Tango Manager -> Add script RelocalizingOverlay 
+UI -> canvas
 
+Set image to: Assets -> Tango SDK -> examples -> common -> textures -> relocalize_screen
 
+Click 'set native size'
 
+- Select Tango Manager -> Add script RelocalizingOverlay (Assets > TangoSDK > Examples > AreaLearning > Scripts )
+
+- Set property RelocalizingOverlay -> set property Relocalization Overlay to Canvas -> Image
 
 
