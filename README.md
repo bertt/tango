@@ -43,6 +43,81 @@ sample: 2_motion_tracking
 
 - Tango Camera -> Camera -> Clear flags -> Solid Color
 
+
+<inmg src="2_motion_tracking.jpg">
+
+## Demo list adfs
+
+Sample: 3_list_adfs
+
+- Add Tango camera
+
+- Tango Manager -> Auto-connect to service -> disable
+
+- Tango Manager -> Tango Application (Script) -> Pose Mode -> Local Area Description (Load existing)
+
+- add script with:
+
+```
+using UnityEngine;
+using Tango;
+
+
+public class startup : MonoBehaviour, ITangoLifecycle
+{
+    private TangoApplication m_tangoApplication;
+    // Use this for initialization
+    void Start () {
+        Debug.Log("ajax list adf startup" );
+
+        m_tangoApplication = FindObjectOfType<TangoApplication>();
+        if (m_tangoApplication != null)
+        {
+            m_tangoApplication.Register(this);
+            m_tangoApplication.RequestPermissions();
+        }
+    }
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
+
+    public void OnTangoPermissions(bool permissionsGranted)
+    {
+        if (permissionsGranted)
+        {
+            AreaDescription[] list = AreaDescription.GetList();
+        
+            if (list.Length > 0)
+            {
+                foreach (var adf in list)
+                {
+                    Debug.Log("ajax adf found:" + adf.m_uuid);
+                }
+            }
+            else
+            {
+                // No Area Descriptions available.
+                Debug.Log("ajax No area descriptions available.");
+            }
+        }
+    }
+
+    public void OnTangoServiceConnected()
+    {
+    }
+
+    public void OnTangoServiceDisconnected()
+    {
+    }
+}
+``` 
+
+- Connect Android Device manager and search for string 'ajax'
+
+<img src="3_list_adfs.png">
+
 ## Demo Area learning
 
 Prerequisites: There should be an ADF available of same room you're now in. Otherwise no localisation is possble and the image will
