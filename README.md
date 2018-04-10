@@ -44,7 +44,7 @@ sample: 2_motion_tracking
 - Tango Camera -> Camera -> Clear flags -> Solid Color
 
 
-<img src="2_motion_tracking.jpg">
+<img src="2_motion_tracking.jpg" height="400">
 
 ## 3] Demo list adfs
 
