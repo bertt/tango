@@ -23,7 +23,7 @@
 
 - Only when using Unity2017: replace google_unity_wrapper.aar (otherwise there will be crash on startup)
 
-- add Tango Manager
+- add TangoPrefabs -> Tango Manager
 
 - replace default camera with Tango camera
 
