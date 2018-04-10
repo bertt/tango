@@ -13,6 +13,8 @@
 
 ## Installation Hello World
 
+sample: scene 1_only_a_box
+
 - Unity3D -> new project
 
 - Build settings -> Android -> Switch platform
@@ -26,6 +28,8 @@
 - add TangoPrefabs -> Tango Manager
 
 - replace default camera with Tango camera
+
+- add a box and a texture for color_
 
 - Enable Tango Manager - Video Overlay with Method = Texture and Raw Bytes
 
