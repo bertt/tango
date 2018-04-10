@@ -13,7 +13,7 @@
 
 ## Installation Hello World
 
-sample: scene 1_only_a_box
+sample: 1_only_a_box
 
 - Unity3D -> new project
 
@@ -34,6 +34,8 @@ sample: scene 1_only_a_box
 - Enable Tango Manager - Video Overlay with Method = Texture and Raw Bytes
 
 ## Demo motion tracking
+
+sample: 2_motion_tracking
 
 - Add some object (like a sphere)
 
