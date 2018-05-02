@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: Assets/TangoSDK/Examples/Scenes/DetectTangoCore.unity
+    guid: 8cd645b9db91744228609df129d24cc2
+  - enabled: 0
+    path: Assets/TangoSDK/Examples/Scenes/MotionTracking.unity
+    guid: c59df9c1a9ba84c2db0075046a9c8f31
+  - enabled: 0
+    path: Assets/TangoSDK/Examples/Scenes/PointCloud.unity
+    guid: da1e5db8a721743a2938ebcc9b514f22
+  - enabled: 1
+    path: Assets/TangoSDK/Examples/Scenes/AreaLearning.unity
+    guid: 3fe863707b0b9426d9ea313be426fbf5
+  - enabled: 0
+    path: Assets/TangoSDK/Examples/Scenes/AreaDescriptionManagement.unity
+    guid: 2ed91207e1f3949a79b14b2435302de1
+  - enabled: 0
+    path: Assets/TangoSDK/Examples/Scenes/PointToPoint.unity
+    guid: a38574aed0d664ee995dba3e1c564494
+  - enabled: 0
+    path: Assets/TangoSDK/Examples/Scenes/SimpleAugmentedReality.unity
+    guid: a1510a21b25fb4d9ab3be3eeb1d3290a
+  - enabled: 0
+    path: Assets/TangoSDK/Examples/Scenes/AugmentedReality.unity
+    guid: f1aab0b9b6c394f64b573456134db7ac
+  - enabled: 0
+    path: Assets/TangoSDK/Examples/Scenes/ExperimentalMeshBuilderWithColor.unity
+    guid: 4e584beb7414842c1b9e16ef4ee7420a
+  - enabled: 0
+    path: Assets/TangoSDK/Examples/Scenes/ExperimentalMeshBuilderWithPhysics.unity
+    guid: 22b16037c41994dcaaf663bec7c0bc4b
+  - enabled: 0
+    path: Assets/TangoSDK/Examples/Scenes/ExperimentalMeshOcclusion.unity
+    guid: f3526adf21a894c2fa15e0ce8bad168a
+  - enabled: 0
+    path: Assets/TangoSDK/Examples/Scenes/ExperimentalFloorFinding.unity
+    guid: 41d3b0f2be66c4f89938682fa7778923
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: Assets/Geodan/Scene/Finch_IndoorNav.unity
+    guid: 54c1af60317c4df47960e5e43fce1293
+  - enabled: 0
+    path: Assets/UAP/Examples/Match 3 Game Example/Match 3 Game Example.unity
+    guid: 8f35a311457b4964c82b71c39f47e1d3
