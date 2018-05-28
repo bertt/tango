@@ -10,8 +10,25 @@
 
 <img src= "http://gadgethubspot.com/wp-content/myimages/2017/07/zpa2.png"/>
 
+## C samples
 
-## 1] Installation Hello World
+todo
+
+## Java samples
+
+- $ git clone https://github.com/googlesamples/tango-examples-java.git
+
+- Start Android Studio
+
+- Import Project (Eclipse ADT, Gradle, etc. )
+
+- Open java_basic_examples directory
+
+- run/debug on device
+
+## Unity3D
+
+### 1] Installation Hello World
 
 sample: 1_only_a_box
 
@@ -33,7 +50,7 @@ sample: 1_only_a_box
 
 - Enable Tango Manager - Video Overlay with Method = Texture and Raw Bytes
 
-## 2] Demo motion tracking
+### 2] Demo motion tracking
 
 sample: 2_motion_tracking
 
@@ -118,7 +135,7 @@ public class startup : MonoBehaviour, ITangoLifecycle
 
 <img src="3_list_adfs.png">
 
-## 4] Demo Area learning
+### 4] Demo Area learning
 
 Prerequisites: There should be an ADF available of same room you're now in. Otherwise no localisation is possble and the image will
 not disappear. Code loads the last available ADF file.
