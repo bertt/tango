@@ -8,7 +8,6 @@ namespace App1
         private readonly MainActivity _activity;
         private string Tag = "Ajax";
 
-
         public TangoUpdateListener(MainActivity activity)
         {
             _activity = activity;
@@ -22,7 +21,6 @@ namespace App1
         public void OnPointCloudAvailable(TangoPointCloudData pointCloud)
         {
             Log.Debug(Tag, "OnPoinctCloudAvailable");
-
         }
 
         public void OnPoseAvailable(TangoPoseData p0)

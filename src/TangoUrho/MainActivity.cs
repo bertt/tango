@@ -6,42 +6,58 @@ using Java.Lang;
 using Android.Util;
 using Com.Projecttango.Tangosupport;
 using System.Collections.Generic;
+using Android.Views;
+using Android.Runtime;
+using Android.Content;
+using Android.Widget;
 
 namespace App1
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
-        private Tango _tango;
+        private Tango tango;
         public static string Tag = "Ajax";
         private TangoConfig _tangoConfig;
-        private bool _isConnected;
         private TangoUpdateListener _tangoUpdateListener;
         private TangoPointCloudManager _pointCloudManager;
+        private IWindowManager _windowManager;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            this.StartActivityForResult(Tango.GetRequestPermissionIntent(Tango.PermissiontypeAdfLoadSave), 0);
 
-            // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
+            /**
             _pointCloudManager = new TangoPointCloudManager();
+            _windowManager = ApplicationContext.GetSystemService(Context.WindowService).JavaCast<IWindowManager>();
+            */
+            var button = (Button)FindViewById(Resource.Id.listadfs);
+            button.Click += delegate {
+                var intent = new Intent(this, typeof(ListAdfsActivity));
+                StartActivity(intent);
+            };
 
-            Connect();
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+            // Connect();
         }
 
         private void Connect()
         {
-            _tango = new Tango(this, new Runnable(() =>
+            tango = new Tango(this, new Runnable(() =>
             {
-                Log.Debug(Tag, "TangoRunnable");
                 try
                 {
+                    Log.Debug(Tag, "TangoRunnable");
                     TangoSupport.Initialize();
-                    _tangoConfig = SetupTangoConfig(_tango);
-                    _tango.Connect(_tangoConfig);
+                    var tangoConfig = ConfigInitialize.SetupTangoConfig(tango);
+                    tango.Connect(tangoConfig);
                     StartupTango();
-                    _isConnected = true;
                 }
                 catch (TangoOutOfDateException e)
                 {
@@ -58,7 +74,6 @@ namespace App1
             }));
         }
 
-
         private void StartupTango()
         {
             var framePairs = new List<TangoCoordinateFramePair>()
@@ -68,46 +83,17 @@ namespace App1
                     TangoPoseData.CoordinateFrameDevice)
             };
             _tangoUpdateListener = new TangoUpdateListener(this);
-            _tango.ConnectListener(framePairs, _tangoUpdateListener);
+            tango.ConnectListener(framePairs, _tangoUpdateListener);
         }
 
-
-
-
-        private TangoConfig SetupTangoConfig(Tango tango)
+        private void ListAdfs()
         {
-            try
+            var listAdfs = tango.ListAreaDescriptions();
+            foreach (var adf in listAdfs)
             {
-                // Create a new Tango Configuration and enable the MotionTrackingActivity API.
-                TangoConfig config = tango.GetConfig(TangoConfig.ConfigTypeDefault);
-                config.PutBoolean(TangoConfig.KeyBooleanMotiontracking, true);
-                // Tango service should automatically attempt to recover when it enters an invalid state.
-                config.PutBoolean(TangoConfig.KeyBooleanAutorecovery, true);
-
-                config.PutBoolean(TangoConfig.KeyBooleanColorcamera, true);
-                config.PutBoolean(TangoConfig.KeyBooleanDepth, true);
-                // NOTE: Low latency integration is necessary to achieve a precise alignment of
-                // virtual objects with the RBG image and produce a good AR effect.
-                config.PutBoolean(TangoConfig.KeyBooleanLowlatencyimuintegration, true);
-                // Drift correction allows motion tracking to recover after it loses tracking.
-                // The drift corrected pose is is available through the frame pair with
-                // base frame AREA_DESCRIPTION and target frame DEVICE.
-                config.PutBoolean(TangoConfig.KeyBooleanDriftCorrection, true);
-                var c = config.GetString(TangoConfig.KeyStringDatasetsPath);
-                config.PutInt(TangoConfig.KeyIntDepthMode, TangoConfig.TangoDepthModePointCloud);
-
-
-                //var files = Directory.GetFiles(c);
-
-                return config;
-            }
-            catch (TangoErrorException e)
-            {
-                Log.Error(Tag, "TangoErrorException", e);
-                throw;
+                Log.Debug(Tag, adf);
             }
         }
-
     }
 }
 
