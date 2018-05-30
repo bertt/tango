@@ -2,14 +2,11 @@
 using Android.OS;
 using Android.Support.V7.App;
 using Com.Google.Atap.Tangoservice;
-using Java.Lang;
-using Android.Util;
 using Com.Projecttango.Tangosupport;
-using System.Collections.Generic;
 using Android.Views;
 using Android.Content;
 using Android.Widget;
-using Android.Runtime;
+using HelloTriangle.Xamarin;
 
 namespace App1
 {
@@ -48,6 +45,14 @@ namespace App1
                 var intent = new Intent(this, typeof(NavigateRouteActivity));
                 StartActivity(intent);
             };
+            var buttonTest = (Button)FindViewById(Resource.Id.test);
+            buttonTest.Click += delegate
+            {
+                var intent = new Intent(this, typeof(OpenGLActivity));
+                StartActivity(intent);
+            };
+
+
         }
 
         protected override void OnResume()

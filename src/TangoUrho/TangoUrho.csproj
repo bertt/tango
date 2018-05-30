@@ -64,10 +64,11 @@
   <ItemGroup>
     <Compile Include="ConfigInitialize.cs" />
     <Compile Include="Core\AreaDescription.cs" />
-    <Compile Include="CreateRouteActivty.cs" />
+    <Compile Include="CreateRouteActivity.cs" />
     <Compile Include="ListAdfsActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="NavigateRouteActivity.cs" />
+    <Compile Include="OpenGLActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TangoUpdateListener.cs" />
@@ -104,6 +105,9 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_round.png" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="OpenGL.Net.Xamarin.Android">
+      <Version>0.7.1</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2" />
   </ItemGroup>
   <ItemGroup>

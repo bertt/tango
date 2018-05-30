@@ -49,7 +49,15 @@ namespace App1
 
             var displayManager = (DisplayManager)GetSystemService("display");
 
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
             StartTango();
+
+            // OpenGL.Point
+            // GLES20.glBindTexture(GLES11Ext.GL_TEXTURE_EXTERNAL_OES, mTextures[0])
         }
 
         private void DisconnectTango()
@@ -63,6 +71,8 @@ namespace App1
             // Create a new Tango configuration and enable the Camera API.
             var config = tango.GetConfig(TangoConfig.ConfigTypeDefault);
             config.PutBoolean(TangoConfig.KeyBooleanColorcamera, true);
+            config.PutBoolean(TangoConfig.KeyBooleanDepth, true);
+            config.PutInt(TangoConfig.KeyIntDepthMode, TangoConfig.TangoDepthModePointCloud);
             return config;
         }
 
@@ -77,6 +87,7 @@ namespace App1
                     var tangoConfig = GetTangoConfig(tango);
                     tango.Connect(tangoConfig);
                     StartupTango();
+                    tango.ConnectTextureId(TangoCameraIntrinsics.TangoCameraColor, -1);
                 }
                 catch (TangoOutOfDateException e)
                 {
