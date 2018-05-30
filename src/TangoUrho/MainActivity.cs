@@ -29,7 +29,6 @@ namespace App1
             base.OnCreate(savedInstanceState);
 
             StartActivityForResult(Tango.GetRequestPermissionIntent(Tango.PermissiontypeAdfLoadSave), 0);
-            //hasPermissionsRequested = true;
 
             SetContentView(Resource.Layout.activity_main);
             //pointCloudManager = new TangoPointCloudManager();
@@ -40,7 +39,18 @@ namespace App1
                 var intent = new Intent(this, typeof(ListAdfsActivity));
                 StartActivity(intent);
             };
-
+            var buttonRec = (Button)FindViewById(Resource.Id.recording);
+            buttonRec.Click += delegate
+            {
+                var intent = new Intent(this, typeof(CreateRouteActivity));
+                StartActivity(intent);
+            };
+            var buttonNav = (Button)FindViewById(Resource.Id.navigating);
+            buttonNav.Click += delegate
+            {
+                var intent = new Intent(this, typeof(NavigateRouteActivity));
+                StartActivity(intent);
+            };
         }
 
         protected override void OnResume()

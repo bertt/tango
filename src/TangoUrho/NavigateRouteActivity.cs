@@ -12,13 +12,13 @@ using Android.Widget;
 
 namespace App1
 {
-    [Activity(Label = "CreateRouteActivity")]
-    public class CreateRouteActivity : Activity
+    [Activity(Label = "NavigateRouteActivity")]
+    public class NavigateRouteActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.activity_create_route);
+            SetContentView(Resource.Layout.activity_navigate_route);
 
             var button = (Button)FindViewById(Resource.Id.back);
             button.Click += delegate
@@ -27,6 +27,8 @@ namespace App1
                 StartActivity(intent);
             };
 
+
+            // Create your application here
         }
     }
 }

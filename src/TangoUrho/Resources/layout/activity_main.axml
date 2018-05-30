@@ -12,19 +12,20 @@
         android:layout_height="fill_parent">
         <Button
             android:text="List ADFS"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/listadfs" />
+            android:layout_width="118.0dp"
+            android:layout_height="107.0dp"
+            android:id="@+id/listadfs"
+            android:layout_marginRight="39.0dp" />
         <Button
             android:text="Record"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="115.0dp"
+            android:layout_height="96.0dp"
             android:id="@+id/recording"
             android:enabled="true" />
         <Button
             android:text="navigate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="118.5dp"
+            android:layout_height="93.0dp"
             android:id="@+id/navigating"
             android:enabled="true" />
     </LinearLayout>
