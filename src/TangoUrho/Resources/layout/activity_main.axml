@@ -20,12 +20,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/recording"
-            android:enabled="false" />
+            android:enabled="true" />
         <Button
             android:text="navigate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/navigating"
-            android:enabled="false" />
+            android:enabled="true" />
     </LinearLayout>
 </RelativeLayout>

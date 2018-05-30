@@ -28,15 +28,15 @@ namespace App1
         {
             base.OnCreate(savedInstanceState);
 
-
-            //StartActivityForResult(Tango.GetRequestPermissionIntent(Tango.PermissiontypeAdfLoadSave), 0);
+            StartActivityForResult(Tango.GetRequestPermissionIntent(Tango.PermissiontypeAdfLoadSave), 0);
             //hasPermissionsRequested = true;
 
             SetContentView(Resource.Layout.activity_main);
             //pointCloudManager = new TangoPointCloudManager();
             //windowManager = ApplicationContext.GetSystemService(Context.WindowService).JavaCast<IWindowManager>();
             var button = (Button)FindViewById(Resource.Id.listadfs);
-            button.Click += delegate {
+            button.Click += delegate
+            {
                 var intent = new Intent(this, typeof(ListAdfsActivity));
                 StartActivity(intent);
             };
@@ -49,6 +49,7 @@ namespace App1
             // Connect();
         }
 
+        /**
         private void Connect()
         {
             tango = new Tango(this, new Runnable(() =>
@@ -130,6 +131,8 @@ namespace App1
                 throw;
             }
         }
+    }
+    */
     }
 }
 
