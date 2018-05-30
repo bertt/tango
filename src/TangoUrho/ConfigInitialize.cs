@@ -11,7 +11,6 @@ namespace App1
             config.PutBoolean(TangoConfig.KeyBooleanMotiontracking, true);
             // Tango service should automatically attempt to recover when it enters an invalid state.
             config.PutBoolean(TangoConfig.KeyBooleanAutorecovery, true);
-            TangoConfig.ConfigTypeAreaDescription
             config.PutBoolean(TangoConfig.KeyBooleanColorcamera, true);
             config.PutBoolean(TangoConfig.KeyBooleanDepth, true);
             // NOTE: Low latency integration is necessary to achieve a precise alignment of
