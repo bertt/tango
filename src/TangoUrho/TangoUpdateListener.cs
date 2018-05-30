@@ -1,14 +1,15 @@
-﻿using Android.Util;
+﻿using Android.App;
+using Android.Util;
 using Com.Google.Atap.Tangoservice;
 
 namespace App1
 {
     public class TangoUpdateListener : Java.Lang.Object, Tango.IOnTangoUpdateListener
     {
-        private readonly MainActivity _activity;
+        private readonly Activity _activity;
         private string Tag = "Ajax";
 
-        public TangoUpdateListener(MainActivity activity)
+        public TangoUpdateListener(Activity activity)
         {
             _activity = activity;
         }
