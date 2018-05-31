@@ -54,7 +54,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GoogleProjectTangoBinding">
-      <HintPath>.\GoogleProjectTangoBinding.dll</HintPath>
+      <HintPath>C:\Users\bertt\Documents\Visual Studio 2017\Projects\App1\GoogleProjectTangoBinding.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />

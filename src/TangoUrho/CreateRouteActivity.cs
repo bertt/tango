@@ -8,6 +8,9 @@ using Com.Projecttango.Tangosupport;
 using Java.Lang;
 using System;
 using System.Collections.Generic;
+using Urho;
+using Urho.Droid;
+
 
 namespace App1
 {
@@ -45,6 +48,11 @@ namespace App1
                 var saveTask = new SaveAdfTask(tango, "z " + t);
                 saveTask.Execute();
             };
+
+            var surface = UrhoSurface.CreateSurface(this);
+            surface.SetBackgroundColor(new Android.Graphics.Color(255,0,0));
+            var mLayout = (AbsoluteLayout)FindViewById(Resource.Id.absoluteLayout1);
+            mLayout.AddView(surface);
         }
 
         public void PointCloudIsAvailable()
@@ -85,6 +93,7 @@ namespace App1
                     tango.Connect(tangoConfig);
                     StartupTango();
                     tango.ConnectTextureId(TangoCameraIntrinsics.TangoCameraColor, -1);
+                    
                 }
                 catch (TangoOutOfDateException e)
                 {
