@@ -12,13 +12,7 @@ namespace App1
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
-        private Tango tango;
         public static string Tag = "Ajax";
-        private TangoConfig _tangoConfig;
-        private TangoUpdateListener tangoUpdateListener;
-        private TangoPointCloudManager pointCloudManager;
-        private IWindowManager windowManager;
-        private bool hasPermissionsRequested = false;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {

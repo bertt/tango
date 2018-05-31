@@ -1,19 +1,13 @@
 ﻿using Android.App;
 using Android.Content;
-using Android.Hardware.Display;
 using Android.OS;
-using Android.Runtime;
 using Android.Util;
-using Android.Views;
 using Android.Widget;
 using Com.Google.Atap.Tangoservice;
 using Com.Projecttango.Tangosupport;
 using Java.Lang;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace App1
 {
@@ -61,13 +55,6 @@ namespace App1
                 buttonSave.Enabled = true;
             });
         }
-
-        /**
-        public void UpdatePointCloud(TangoPointCloudData pointCloud)
-        {
-            //pointCloudManager.UpdatePointCloud(pointCloud);
-        }*/
-
         protected override void OnResume()
         {
             base.OnResume();
@@ -84,14 +71,6 @@ namespace App1
         {
             var config = ConfigInitialize.SetupTangoConfig(tango);
             return config;
-            
-            
-            // Create a new Tango configuration and enable the Camera API.
-            /**var config = tango.GetConfig(TangoConfig.ConfigTypeDefault);
-            config.PutBoolean(TangoConfig.KeyBooleanColorcamera, true);
-            config.PutBoolean(TangoConfig.KeyBooleanDepth, true);
-            config.PutInt(TangoConfig.KeyIntDepthMode, TangoConfig.TangoDepthModePointCloud);
-            return config;*/
         }
 
         private void StartTango()

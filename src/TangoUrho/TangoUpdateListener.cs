@@ -68,8 +68,5 @@ namespace App1
             }
             return averageZ;
         }
-
-
-
     }
 }

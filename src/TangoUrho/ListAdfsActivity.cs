@@ -50,8 +50,6 @@ namespace App1
                     adfs.Add(name);
                 }
 
-                // now draw in UI
-
                 RunOnUiThread(() =>
                 {
                     var lv = (ListView)FindViewById(Resource.Id.listView1);
