@@ -28,11 +28,5 @@
             android:layout_height="93.0dp"
             android:id="@+id/navigating"
             android:enabled="true" />
-        <Button
-            android:text="test"
-            android:layout_width="118.5dp"
-            android:layout_height="93.0dp"
-            android:id="@+id/test"
-            android:enabled="true" />
     </LinearLayout>
 </RelativeLayout>

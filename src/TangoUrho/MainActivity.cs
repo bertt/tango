@@ -6,7 +6,6 @@ using Com.Projecttango.Tangosupport;
 using Android.Views;
 using Android.Content;
 using Android.Widget;
-using HelloTriangle.Xamarin;
 
 namespace App1
 {
@@ -45,14 +44,6 @@ namespace App1
                 var intent = new Intent(this, typeof(NavigateRouteActivity));
                 StartActivity(intent);
             };
-            var buttonTest = (Button)FindViewById(Resource.Id.test);
-            buttonTest.Click += delegate
-            {
-                var intent = new Intent(this, typeof(OpenGLActivity));
-                StartActivity(intent);
-            };
-
-
         }
 
         protected override void OnResume()

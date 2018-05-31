@@ -68,9 +68,9 @@
     <Compile Include="ListAdfsActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="NavigateRouteActivity.cs" />
-    <Compile Include="OpenGLActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaveAdfTask.cs" />
     <Compile Include="TangoUpdateListener.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -105,8 +105,8 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_round.png" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="OpenGL.Net.Xamarin.Android">
-      <Version>0.7.1</Version>
+    <PackageReference Include="UrhoSharp">
+      <Version>1.8.93</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2" />
   </ItemGroup>

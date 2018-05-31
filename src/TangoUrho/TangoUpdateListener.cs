@@ -6,10 +6,10 @@ namespace App1
 {
     public class TangoUpdateListener : Java.Lang.Object, Tango.IOnTangoUpdateListener
     {
-        private readonly Activity _activity;
+        private readonly CreateRouteActivity _activity;
         private string Tag = "Ajax";
 
-        public TangoUpdateListener(Activity activity)
+        public TangoUpdateListener(CreateRouteActivity activity)
         {
             _activity = activity;
         }
@@ -31,6 +31,12 @@ namespace App1
             // this is being called when depth mode is enabled in the config
             var z = calculateAveragedDepth(pointCloud);
             Log.Debug(Tag, "Point Cloud Available! Points:" + pointCloud.NumPoints + ", z: " + z);
+
+            _activity.PointCloudIsAvailable();
+
+            // why do we need this?
+            // _activity.UpdatePointCloud(pointCloud);
+
         }
 
         public void OnFrameAvailable(int p0)

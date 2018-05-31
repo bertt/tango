@@ -10,17 +10,13 @@
         android:text="Create route" />
     <Button
         android:text="&lt;-"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="131.5dp"
+        android:layout_height="70.5dp"
         android:id="@+id/back" />
     <Button
         android:text="Save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/save" />
-    <SurfaceView
-        android:layout_width="match_parent"
-        android:layout_height="429.0dp"
-        android:id="@+id/surfaceView1"
-        android:layout_marginBottom="419.0dp" />
+        android:layout_width="138.0dp"
+        android:layout_height="83.0dp"
+        android:id="@+id/save"
+        android:enabled="false" />
 </LinearLayout>
