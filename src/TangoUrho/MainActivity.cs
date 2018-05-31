@@ -38,6 +38,13 @@ namespace App1
                 var intent = new Intent(this, typeof(NavigateRouteActivity));
                 StartActivity(intent);
             };
+
+            var buttonUrho = (Button)FindViewById(Resource.Id.urho);
+            buttonUrho.Click += delegate
+            {
+                var intent = new Intent(this, typeof(UrhoActivity));
+                StartActivity(intent);
+            };
         }
 
         protected override void OnResume()

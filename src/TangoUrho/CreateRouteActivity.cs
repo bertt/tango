@@ -24,7 +24,7 @@ namespace App1
         private TangoPointCloudManager pointCloudManager;
         // private IWindowManager windowManager;
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected async override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_create_route);
@@ -53,6 +53,7 @@ namespace App1
             surface.SetBackgroundColor(new Android.Graphics.Color(255,0,0));
             var mLayout = (AbsoluteLayout)FindViewById(Resource.Id.absoluteLayout1);
             mLayout.AddView(surface);
+            var app = await surface.Show<UrhoScene>(new ApplicationOptions("Data"));
         }
 
         public void PointCloudIsAvailable()
