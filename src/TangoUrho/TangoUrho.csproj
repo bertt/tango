@@ -54,7 +54,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GoogleProjectTangoBinding">
-      <HintPath>C:\Users\bertt\Documents\Visual Studio 2017\Projects\App1\GoogleProjectTangoBinding.dll</HintPath>
+      <HintPath>.\GoogleProjectTangoBinding.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
@@ -146,6 +146,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Data\Textures\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GoogleProjectTangoBinding.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

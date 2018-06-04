@@ -45,15 +45,15 @@ namespace App1
                 // todo: ask for name
                 var dt = DateTime.Now;
                 var t = System.String.Format("{0:HH:mm:ss}", dt);
-                var saveTask = new SaveAdfTask(tango, "z " + t);
-                saveTask.Execute();
+                var saveTask = new SaveAdfTask(this, tango, "z " + t);
+                var res = saveTask.Execute();
             };
 
-            var surface = UrhoSurface.CreateSurface(this);
-            surface.SetBackgroundColor(new Android.Graphics.Color(255,0,0));
-            var mLayout = (AbsoluteLayout)FindViewById(Resource.Id.absoluteLayout1);
-            mLayout.AddView(surface);
-            var app = await surface.Show<UrhoScene>(new ApplicationOptions("Data"));
+            //var surface = UrhoSurface.CreateSurface(this);
+            //surface.SetBackgroundColor(new Android.Graphics.Color(255,0,0));
+            //var mLayout = (AbsoluteLayout)FindViewById(Resource.Id.absoluteLayout1);
+            //mLayout.AddView(surface);
+            // var app = await surface.Show<UrhoScene>(new ApplicationOptions("Data"));
         }
 
         public void PointCloudIsAvailable()
