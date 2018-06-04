@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
+﻿using Android.App;
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Urho;
@@ -23,11 +16,22 @@ namespace App1
         {
             base.OnCreate(savedInstanceState);
             var mLayout = new RelativeLayout(this);
-            var surface = UrhoSurface.CreateSurface(this);// (this, , true);
+            // var surface = UrhoSurface.CreateSurface(this);// (this, , true);
+            var scene = new DemoScene(new ApplicationOptions("Data"));
+            var surface = UrhoSurface.CreateSurface(this);
             mLayout.AddView(surface);
             SetContentView(mLayout);
             // var type = Type.GetType(Intent.GetStringExtra("Type"));
-            app = await surface.Show<UrhoScene>(new ApplicationOptions("Data"));
+
+            // next thing works:
+            // app = await surface.Show<UrhoScene>(new ApplicationOptions("Data"));
+
+            // next thing works:
+            app = await surface.Show<BertApp>(new ApplicationOptions("Data"));
+
+            // app = await surface.Show(Type.GetType(Intent.GetStringExtra("Type")), new ApplicationOptions("Data"));
+
+
         }
 
         protected override void OnResume()

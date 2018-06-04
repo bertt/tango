@@ -62,9 +62,11 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BertScene.cs" />
     <Compile Include="ConfigInitialize.cs" />
     <Compile Include="Core\AreaDescription.cs" />
     <Compile Include="CreateRouteActivity.cs" />
+    <Compile Include="DemoScene.cs" />
     <Compile Include="ListAdfsActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="NavigateRouteActivity.cs" />
@@ -112,6 +114,9 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="UrhoSharp">
+      <Version>1.8.93</Version>
+    </PackageReference>
+    <PackageReference Include="UrhoSharp.ARCore">
       <Version>1.8.93</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2" />
