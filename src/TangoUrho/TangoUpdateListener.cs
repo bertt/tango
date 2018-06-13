@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Util;
 using Com.Google.Atap.Tangoservice;
+using System.IO;
 using Urho;
 
 namespace App1
@@ -31,11 +32,11 @@ namespace App1
         {
             // this is being called when depth mode is enabled in the config
             var z = calculateAveragedDepth(pointCloud);
-            Log.Debug(Tag, "Point Cloud Available! Points:" + pointCloud.NumPoints + ", z: " + z);
+           Log.Debug(Tag, "Point Cloud Available! Points:" + pointCloud.NumPoints + ", z: " + z);
 
             _activity.PointCloudIsAvailable();
 
-            WritePointCloudData(pointCloud);
+           //  WritePointCloudData(pointCloud);
 
             // why do we need this?
             // _activity.UpdatePointCloud(pointCloud);
@@ -45,6 +46,7 @@ namespace App1
         public void WritePointCloudData(TangoPointCloudData pointCloud)
         {
             var m_pointsCount = pointCloud.NumPoints;
+            Log.Debug("Test", $"{m_pointsCount}");
 
             // Count each depth point into a bucket based on its world position y value.
             for (int i = 0; i < m_pointsCount; i++)
@@ -54,8 +56,9 @@ namespace App1
                 var z = pointCloud.Points.Get(i * 4 + 2);
                 var point = new Vector3(x, y, z);
 
-                Log.Debug("Test", $"{x},{y},{z}");
+                Log.Debug("bertho",$"{x},{y},{z}");
             }
+            var e = false;
         }
 
             public void OnFrameAvailable(int p0)
