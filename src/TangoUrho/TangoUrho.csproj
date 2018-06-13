@@ -67,6 +67,7 @@
     <Compile Include="Core\AreaDescription.cs" />
     <Compile Include="CreateRouteActivity.cs" />
     <Compile Include="DemoScene.cs" />
+    <Compile Include="FloorFinder.cs" />
     <Compile Include="ListAdfsActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="NavigateRouteActivity.cs" />
@@ -120,6 +121,9 @@
       <Version>1.8.93</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2" />
+    <PackageReference Include="Xamarin.Google.ARCore">
+      <Version>1.0.0</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_listadfs.axml">
@@ -153,6 +157,7 @@
     <Folder Include="Assets\Data\Textures\" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="Assets\Data\Images\markerStart.png" />
     <Content Include="GoogleProjectTangoBinding.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

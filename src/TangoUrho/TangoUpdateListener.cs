@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Util;
 using Com.Google.Atap.Tangoservice;
+using Urho;
 
 namespace App1
 {
@@ -34,12 +35,30 @@ namespace App1
 
             _activity.PointCloudIsAvailable();
 
+            WritePointCloudData(pointCloud);
+
             // why do we need this?
             // _activity.UpdatePointCloud(pointCloud);
 
         }
 
-        public void OnFrameAvailable(int p0)
+        public void WritePointCloudData(TangoPointCloudData pointCloud)
+        {
+            var m_pointsCount = pointCloud.NumPoints;
+
+            // Count each depth point into a bucket based on its world position y value.
+            for (int i = 0; i < m_pointsCount; i++)
+            {
+                var x = pointCloud.Points.Get(i * 4);
+                var y = pointCloud.Points.Get(i * 4 + 1);
+                var z = pointCloud.Points.Get(i * 4 + 2);
+                var point = new Vector3(x, y, z);
+
+                Log.Debug("Test", $"{x},{y},{z}");
+            }
+        }
+
+            public void OnFrameAvailable(int p0)
         {
             // this is being called after adding call to tango.ConnectTextureId
             // Todo: handle the frame
@@ -68,5 +87,7 @@ namespace App1
             }
             return averageZ;
         }
+
+
     }
 }

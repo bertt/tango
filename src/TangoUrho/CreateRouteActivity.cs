@@ -34,7 +34,7 @@ namespace App1
             var button = (Button)FindViewById(Resource.Id.back);
             button.Click += delegate
             {
-                DisconnectTango();
+                // DisconnectTango();
                 var intent = new Intent(this, typeof(MainActivity));
                 StartActivity(intent);
             };
@@ -92,7 +92,7 @@ namespace App1
                     TangoSupport.Initialize();
                     var tangoConfig = GetTangoConfig(tango);
                     tango.Connect(tangoConfig);
-                    StartupTango();
+                    TangoAddListeners();
                     tango.ConnectTextureId(TangoCameraIntrinsics.TangoCameraColor, -1);
                     
                 }
@@ -112,7 +112,7 @@ namespace App1
         }
 
 
-        private void StartupTango()
+        private void TangoAddListeners()
         {
             var framePairs = new List<TangoCoordinateFramePair>()
             {

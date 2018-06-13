@@ -3,6 +3,7 @@ using System;
 using Com.Google.AR.Core;
 using Urho;
 using Urho.Droid;
+using Urho.Resources;
 
 namespace App1
 {
@@ -41,7 +42,6 @@ namespace App1
             ArCore.ARFrameUpdated += OnARFrameUpdated;
             ArCore.ConfigRequested += ArCore_ConfigRequested;
             ArCore.Run();
-
 
             fps = new MonoDebugHud(this);
             fps.FpsOnly = true;
