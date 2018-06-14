@@ -1,7 +1,5 @@
-﻿using Android.App;
-using Android.Util;
+﻿using Android.Util;
 using Com.Google.Atap.Tangoservice;
-using System.IO;
 using Urho;
 
 namespace App1
@@ -18,8 +16,20 @@ namespace App1
 
         public void OnPoseAvailable(TangoPoseData p0)
         {
-            // this is being called
-            // Log.Debug(Tag, "OnPoseAvailable");
+            var baseFrameType = (TangoCoordinateFrameType)p0.BaseFrame;
+            var targetFrameType = (TangoCoordinateFrameType)p0.TargetFrame;
+
+            // 
+            // Log.Debug("Tag", baseFrameType.ToString());
+            // Log.Debug("Tag", targetFrameType.ToString());
+            var translation = p0.GetTranslationAsFloats();
+            var orientation = p0.GetRotationAsFloats();
+
+            var position = new Vector3(translation[0], translation[1], translation[2]);
+            var rotation = new Quaternion(orientation[0], orientation[1], orientation[2], orientation[3]);
+
+            // Log.Debug(Tag, $"{position.X}, {position.Y},{position.Z}");
+            // Log.Debug(Tag, $"{rotation.X}, {rotation.Y},{rotation.Z},{rotation.W}");
         }
 
         public void OnTangoEvent(TangoEvent p0)
@@ -32,11 +42,15 @@ namespace App1
         {
             // this is being called when depth mode is enabled in the config
             var z = calculateAveragedDepth(pointCloud);
-           Log.Debug(Tag, "Point Cloud Available! Points:" + pointCloud.NumPoints + ", z: " + z);
+
+            // var f = new FloorFinder();
+            // var floor = f.FindFloor(pointCloud,0);
+            //Log.Debug(Tag, $"Floor: {floor}");
+            Log.Debug(Tag, "Point Cloud Available! Points:" + pointCloud.NumPoints + ", z: " + z);
 
             _activity.PointCloudIsAvailable();
 
-           //  WritePointCloudData(pointCloud);
+           // WritePointCloudData(pointCloud);
 
             // why do we need this?
             // _activity.UpdatePointCloud(pointCloud);
@@ -54,9 +68,11 @@ namespace App1
                 var x = pointCloud.Points.Get(i * 4);
                 var y = pointCloud.Points.Get(i * 4 + 1);
                 var z = pointCloud.Points.Get(i * 4 + 2);
+                var c = pointCloud.Points.Get(i * 4 + 3);
+
                 var point = new Vector3(x, y, z);
 
-                Log.Debug("bertho",$"{x},{y},{z}");
+                Log.Debug("bertho",$"{x},{y},{z},{c}");
             }
             var e = false;
         }

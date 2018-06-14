@@ -4,7 +4,7 @@ namespace App1
 {
     public class ConfigInitialize
     {
-        public static TangoConfig SetupTangoConfig(Tango tango)
+        public static TangoConfig SetupTangoConfigForRecording(Tango tango)
         {
             // Create a new Tango Configuration and enable the MotionTrackingActivity API.
             TangoConfig config = tango.GetConfig(TangoConfig.ConfigTypeDefault);
@@ -25,5 +25,17 @@ namespace App1
             return config;
         }
 
+        public static TangoConfig SetupTangoConfigForNavigating(Tango tango, string uuid)
+        {
+            var config = tango.GetConfig(TangoConfig.ConfigTypeDefault);
+            config.PutBoolean(TangoConfig.KeyBooleanMotiontracking, true);
+            config.PutString(TangoConfig.KeyStringAreadescription, uuid);
+
+            // is this next one are learning mode?
+            config.PutBoolean(TangoConfig.KeyBooleanLearningmode, false);
+            config.PutBoolean(TangoConfig.KeyBooleanLowlatencyimuintegration, true);
+            config.PutBoolean(TangoConfig.KeyBooleanAutorecovery, true);
+            return config;
+        }
     }
 }

@@ -17,6 +17,12 @@ namespace App1
         private bool m_findFloorWithDepth = true;
         public float m_floorPlaneY = 0.0f;
 
+        public FloorFinder()
+        {
+            m_numPointsAtY = new Dictionary<float, int>();
+            m_nonNoiseBuckets = new List<float>();
+        }
+
         public float FindFloor(TangoPointCloudData pointCloud, float cameraY)
         {
             var m_points = pointCloud.Points;

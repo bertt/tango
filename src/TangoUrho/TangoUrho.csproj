@@ -68,12 +68,14 @@
     <Compile Include="CreateRouteActivity.cs" />
     <Compile Include="DemoScene.cs" />
     <Compile Include="FloorFinder.cs" />
+    <Compile Include="FramePairsInitializer.cs" />
     <Compile Include="ListAdfsActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="NavigateRouteActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaveAdfTask.cs" />
+    <Compile Include="TangoCoordinateFrameType.cs" />
     <Compile Include="TangoUpdateListener.cs" />
     <Compile Include="UrhoActivity.cs" />
     <Compile Include="UrhoScene.cs" />

@@ -7,10 +7,6 @@ using Com.Google.Atap.Tangoservice;
 using Com.Projecttango.Tangosupport;
 using Java.Lang;
 using System;
-using System.Collections.Generic;
-using Urho;
-using Urho.Droid;
-
 
 namespace App1
 {
@@ -70,6 +66,13 @@ namespace App1
             StartTango();
         }
 
+        protected override void OnPause()
+        {
+            base.OnPause();
+            DisconnectTango();
+            // tango.Disconnect();
+        }
+
         private void DisconnectTango()
         {
             tango.DisconnectCamera(TangoCameraIntrinsics.TangoCameraColor);
@@ -78,7 +81,7 @@ namespace App1
 
         private TangoConfig GetTangoConfig(Tango tango)
         {
-            var config = ConfigInitialize.SetupTangoConfig(tango);
+            var config = ConfigInitialize.SetupTangoConfigForRecording(tango);
             return config;
         }
 
@@ -111,21 +114,13 @@ namespace App1
             }));
         }
 
-
         private void TangoAddListeners()
         {
-            var framePairs = new List<TangoCoordinateFramePair>()
-            {
-                new TangoCoordinateFramePair(
-                    TangoPoseData.CoordinateFrameStartOfService,
-                    TangoPoseData.CoordinateFrameDevice)
-            };
-
-            framePairs.Add(new TangoCoordinateFramePair(TangoPoseData.CoordinateFrameAreaDescription, TangoPoseData.CoordinateFrameDevice));
-            framePairs.Add(new TangoCoordinateFramePair(TangoPoseData.CoordinateFrameAreaDescription, TangoPoseData.CoordinateFrameStartOfService));
-
-            tangoUpdateListener = new TangoUpdateListener(this);
-            tango.ConnectListener(framePairs, tangoUpdateListener);
+            var pairs = FramePairsInitializer.GetPairs();
+            var tangoUpdateListener = new TangoUpdateListener(this);
+            tango.ConnectListener(pairs, tangoUpdateListener);
         }
+
+
     }
 }
