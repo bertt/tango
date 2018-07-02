@@ -30,7 +30,7 @@ namespace App1
             var button = (Button)FindViewById(Resource.Id.back);
             button.Click += delegate
             {
-                // DisconnectTango();
+                DisconnectTango();
                 var intent = new Intent(this, typeof(MainActivity));
                 StartActivity(intent);
             };

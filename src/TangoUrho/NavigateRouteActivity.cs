@@ -20,6 +20,7 @@ namespace App1
             var button = (Button)FindViewById(Resource.Id.back);
             button.Click += delegate
             {
+                DisconnectTango();
                 var intent = new Intent(this, typeof(MainActivity));
                 StartActivity(intent);
             };
@@ -27,36 +28,68 @@ namespace App1
 
             tango = new Tango(this, new Runnable(() =>
             {
-                var listAdfs = tango.ListAreaDescriptions();
-
-                // take the first...
-                var uuid = listAdfs[0];
-                var metadata = tango.LoadAreaDescriptionMetaData(uuid);
-                var name = new String(metadata.Get(TangoAreaDescriptionMetaData.KeyName)).ToString();
-
-                Log.Debug("Tag", "ADF loading: " + name);
-
-                InitializeMotionTracking(uuid);
-
                 // now load the latest adf...
-
+                StartTango();
             }));
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+            StartTango();
+        }
+
+        private void StartTango()
+        {
+            var listAdfs = tango.ListAreaDescriptions();
+
+            // take the first...
+            var uuid = listAdfs[0];
+            var metadata = tango.LoadAreaDescriptionMetaData(uuid);
+            var name = new String(metadata.Get(TangoAreaDescriptionMetaData.KeyName)).ToString();
+
+            Log.Debug("Tag", "ADF loading: " + name);
+
+            InitializeMotionTracking(uuid);
+        }
+
+        protected override void OnPause()
+        {
+            base.OnPause();
+            DisconnectTango();
+            // tango.Disconnect();
+        }
+
+        private void DisconnectTango()
+        {
+            //tango.DisconnectCamera(TangoCameraIntrinsics.TangoCameraColor);
+            // tango.Disconnect();
         }
 
         private void InitializeMotionTracking(string uuid)
         {
+            DisconnectTango();
             var config = ConfigInitialize.SetupTangoConfigForNavigating(tango, uuid);
 
+            try
+            {
+                tango.Connect(config);
+            }
+            catch (TangoErrorException ex)
+            {
+                Log.Debug("Tag", "arghh Tango Error exception!");
+                // "Connect failed internally: -1"
+            }
+            TangoAddListeners();
         }
-
 
         private void TangoAddListeners()
         {
 
             var pairs = FramePairsInitializer.GetPairs();
 
-            //var tangoUpdateListener = new TangoUpdateListener(this);
-            //tango.ConnectListener(pairs, tangoUpdateListener);
+            var tangoNavigateListener = new TangoNavigateListener(this);
+            tango.ConnectListener(pairs, tangoNavigateListener);
         }
 
     }

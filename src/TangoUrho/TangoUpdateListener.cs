@@ -50,7 +50,7 @@ namespace App1
 
             _activity.PointCloudIsAvailable();
 
-           // WritePointCloudData(pointCloud);
+            // WritePointCloudData(pointCloud);
 
             // why do we need this?
             // _activity.UpdatePointCloud(pointCloud);
@@ -72,12 +72,12 @@ namespace App1
 
                 var point = new Vector3(x, y, z);
 
-                Log.Debug("bertho",$"{x},{y},{z},{c}");
+                Log.Debug("bertho", $"{x},{y},{z},{c}");
             }
             var e = false;
         }
 
-            public void OnFrameAvailable(int p0)
+        public void OnFrameAvailable(int p0)
         {
             // this is being called after adding call to tango.ConnectTextureId
             // Todo: handle the frame
