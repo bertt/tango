@@ -11,6 +11,7 @@ namespace App1
     [Activity(Label = "NavigateRouteActivity")]
     public class NavigateRouteActivity : Activity
     {
+        private string Tag = "NavigateRouteActivity";
         private Tango tango;
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -62,25 +63,31 @@ namespace App1
 
         private void DisconnectTango()
         {
-            //tango.DisconnectCamera(TangoCameraIntrinsics.TangoCameraColor);
-            // tango.Disconnect();
+            tango.DisconnectCamera(TangoCameraIntrinsics.TangoCameraColor);
+            tango.Disconnect();
         }
 
         private void InitializeMotionTracking(string uuid)
         {
-            DisconnectTango();
             var config = ConfigInitialize.SetupTangoConfigForNavigating(tango, uuid);
 
             try
             {
                 tango.Connect(config);
+                TangoAddListeners();
             }
-            catch (TangoErrorException ex)
+            catch (TangoOutOfDateException e)
             {
-                Log.Debug("Tag", "arghh Tango Error exception!");
-                // "Connect failed internally: -1"
+                Log.Error(Tag, "TangoOutOfDateException", e);
             }
-            TangoAddListeners();
+            catch (TangoErrorException e)
+            {
+                Log.Error(Tag, "TangoErrorException", e);
+            }
+            catch (TangoInvalidException e)
+            {
+                Log.Error(Tag, "TangoInvalidException", e);
+            }
         }
 
         private void TangoAddListeners()
@@ -91,6 +98,5 @@ namespace App1
             var tangoNavigateListener = new TangoNavigateListener(this);
             tango.ConnectListener(pairs, tangoNavigateListener);
         }
-
     }
 }
