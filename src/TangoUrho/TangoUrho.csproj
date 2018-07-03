@@ -62,15 +62,15 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BertScene.cs" />
+    <Compile Include="BertApp.cs" />
     <Compile Include="ConfigInitialize.cs" />
     <Compile Include="Core\AreaDescription.cs" />
     <Compile Include="CreateRouteActivity.cs" />
-    <Compile Include="DemoScene.cs" />
     <Compile Include="FloorFinder.cs" />
     <Compile Include="FramePairsInitializer.cs" />
     <Compile Include="ListAdfsActivity.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="MarshallingHelper.cs" />
     <Compile Include="NavigateRouteActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -154,9 +154,7 @@
     <AndroidAsset Include="Assets\Data\Materials\PointMaterial.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Data\Scenes\TangoScene.xml" />
-  </ItemGroup>
-  <ItemGroup>
+    <Folder Include="Assets\Data\Scenes\" />
     <Folder Include="Assets\Data\Textures\" />
   </ItemGroup>
   <ItemGroup>

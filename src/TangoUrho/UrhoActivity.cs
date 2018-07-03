@@ -4,7 +4,6 @@ using Android.Views;
 using Android.Widget;
 using Urho;
 using Urho.Droid;
-using Google.AR.Core;
 
 namespace App1
 {
@@ -17,7 +16,6 @@ namespace App1
         {
             base.OnCreate(savedInstanceState);
             var mLayout = new RelativeLayout(this);
-            var scene = new DemoScene(new ApplicationOptions("Data"));
             var surface = UrhoSurface.CreateSurface(this);
             mLayout.AddView(surface);
             SetContentView(mLayout);
@@ -50,7 +48,7 @@ namespace App1
 
         public override bool DispatchKeyEvent(KeyEvent e)
         {
-            if (e.KeyCode == Android.Views.Keycode.Back)
+            if (e.KeyCode == Keycode.Back)
             {
                 this.Finish();
                 return false;

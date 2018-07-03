@@ -1,6 +1,4 @@
-﻿
-using System;
-using Com.Google.AR.Core;
+﻿using Com.Google.AR.Core;
 using Urho;
 using Urho.Droid;
 using Urho.Resources;
@@ -12,18 +10,21 @@ namespace App1
         Viewport viewport;
         public ARCoreComponent ArCore { get; private set; }
         MonoDebugHud fps;
+        Frame currentFrame;
+        Zone zone;
 
         [Preserve]
         public BertApp(ApplicationOptions options) : base(options) { }
 
         protected override void Start()
         {
-            // 3d scene with octree and ambient light
             var scene = new Scene(Context);
             var octree = scene.CreateComponent<Octree>();
 
             var cameraNode = scene.CreateChild(name: "Camera");
             var camera = cameraNode.CreateComponent<Urho.Camera>();
+            zone = scene.CreateComponent<Zone>();
+            zone.AmbientColor = new Color(1, 1, 1) * 0.2f;
 
             var lightNode = cameraNode.CreateChild();
             lightNode.SetDirection(new Vector3(1f, -1.0f, 1f));
@@ -43,10 +44,18 @@ namespace App1
             ArCore.ConfigRequested += ArCore_ConfigRequested;
             ArCore.Run();
 
+            var mutantNode = scene.CreateChild();
+            mutantNode.Position = new Vector3(0, -0.5f, 0.5f); // 50cm Y, 50cm Z
+            mutantNode.SetScale(0.3f);
+            var model = mutantNode.CreateComponent<StaticModel>();
+            model.CastShadows = true;
+            model.Model = ResourceCache.GetModel("Models/Box.mdl");
+            model.Material = ResourceCache.GetMaterial("Materials/DefaultGrey.xml");
+
+
             fps = new MonoDebugHud(this);
             fps.FpsOnly = true;
             fps.Show(Color.Blue, 25);
-
         }
 
         private void ArCore_ConfigRequested(Config config)
@@ -56,9 +65,29 @@ namespace App1
             config.SetUpdateMode(Config.UpdateMode.LatestCameraImage); //non blocking
         }
 
-        private void OnARFrameUpdated(Frame obj)
+        private void OnARFrameUpdated(Frame arFrame)
         {
-            throw new NotImplementedException();
+            currentFrame = arFrame;
+            var anchors = arFrame.UpdatedAnchors;
+            var pointcloud = arFrame.AcquirePointCloud();
+            var capacity = pointcloud.Points.Capacity();
+            var points = pointcloud.Points;
+
+            for(var i = 0; i < capacity; i++)
+            {
+                var point = points.Get(i);
+            }
+
+
+            var timestamp = pointcloud.Timestamp;
+            fps.AdditionalText = "Capacity: " + capacity;
+
+            //TODO: visulize anchors (don't forget ARCore uses RHD coordinate system)
+
+            // Adjust our ambient light based on the light estimates ARCore provides each frame
+            var lightEstimate = arFrame.LightEstimate;
+            // fps.AdditionalText = "Intensity: " + lightEstimate?.PixelIntensity.ToString("F1");
+            zone.AmbientColor = new Color(1, 1, 1) * ((lightEstimate?.PixelIntensity ?? 0.2f) / 2f);
         }
     }
 }
